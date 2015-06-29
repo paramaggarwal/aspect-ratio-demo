@@ -10,33 +10,63 @@ var {
   StyleSheet,
   Text,
   View,
+  Image,
+  ScrollView,
+  SliderIOS
 } = React;
 
+var windowWidth = require('Dimensions').get('window').width;
+
 var AspectRatioDemo = React.createClass({
+  getInitialState: function () {
+    return {
+      value: 0.75
+    };
+  },
+
   render: function() {
+
+    /*
+     * The width of the parent view of the images
+     * can be changes using the slider!
+     */
+    var viewWidth = this.state.value * windowWidth;
+
     return (
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+         AspectRatioBox Demo
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+          The image is wrapped inside a view. Its width is controlled using the slider below. There is no styling on the images.
         </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+
+        <SliderIOS
+          style={styles.slider}
+          value={this.state.value}
+          onValueChange={(value) => this.setState({value: value})} />
+
+        <View style={{width: viewWidth, backgroundColor: 'white'}}>
+          <Image aspectRatioBox={{
+            width: 612,
+            height: 456,
+          }}
+          source={{
+            uri: "http://edibleapple.com/wp-content/uploads/2009/11/steve-jobs-bill-gates-1991.jpg",
+          }} />
+          </View>
+      </ScrollView>
     );
   }
 });
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    paddingTop: 20,
   },
   welcome: {
     fontSize: 20,
@@ -47,6 +77,11 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  slider: {
+    alignSelf: 'stretch',
+    height: 10,
+    margin: 10,
   },
 });
 
