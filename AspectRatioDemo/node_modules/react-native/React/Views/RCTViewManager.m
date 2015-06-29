@@ -269,4 +269,6 @@ RCT_REMAP_SHADOW_PROPERTY(position, positionType, css_position_type_t)
 
 RCT_REMAP_SHADOW_PROPERTY(onLayout, hasOnLayout, BOOL)
 
+RCT_EXPORT_SHADOW_PROPERTY(aspectRatioBox, CGSize)
+
 @end

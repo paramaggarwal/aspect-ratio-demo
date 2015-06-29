@@ -177,6 +177,18 @@ var View = React.createClass({
     style: stylePropType,
 
     /**
+     * This property makes the view resize in the same aspect ratio as the 
+     * `aspectRatioBox` rectangle. As the width changes due to flex layout,
+     * the height will change in proportion with same aspect ratio. Use this
+     * to wrap images and other components, where you would like the aspect
+     * ratio to be maintained.
+     */
+    aspectRatioBox: PropTypes.shape({
+      width: PropTypes.number,
+      height: PropTypes.number,
+    }),
+
+    /**
      * This is a special performance property exposed by RCTView and is useful
      * for scrolling content when there are many subviews, most of which are
      * offscreen. For this property to be effective, it must be applied to a
