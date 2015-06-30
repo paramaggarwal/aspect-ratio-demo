@@ -18,7 +18,7 @@ This demonstrates the changes in this PR: https://github.com/facebook/react-nati
 ```
 <View style={{width: viewWidth, backgroundColor: 'white'}}>
   <Image
-    aspectRatioBox={{
+    aspectRatio={{
       width: 612,
       height: 456,
     }}
@@ -28,10 +28,7 @@ This demonstrates the changes in this PR: https://github.com/facebook/react-nati
   />
 
   {/* 1x1 Aspect Ratio - Square Box. */}
-  <View aspectRatioBox={{
-    width: 1,
-    height: 1,
-  }}>
+  <View aspectRatio={1}>
     <View style={{flexDirection: 'row', flex: 1}}>
       <Image
         style={{flex: 1}}
